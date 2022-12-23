@@ -1,4 +1,4 @@
-import { Popconfirm, Table, Typography, Space, } from 'antd';
+import { Popconfirm, Table, Space, } from 'antd';
 import React, { useState } from 'react';
 import MyModal from './components/MyModal';
 import 'antd/dist/antd.css';
@@ -34,9 +34,9 @@ const App: React.FC = () => {
  
 
 enum Columns {
-  NAME="Name",
-  AGE="Age",
-  ACTION="Action"
+  NAME="name",
+  AGE="age",
+  ACTION="action"
  }
 
   const columns = [
