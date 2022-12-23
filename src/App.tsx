@@ -32,25 +32,33 @@ const App: React.FC = () => {
 
   ]);
  
+
+enum Columns {
+  NAME="Name",
+  AGE="Age",
+  ACTION="Action"
+ }
+
   const columns = [
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
+      title: Columns.NAME,
+      dataIndex: Columns.NAME,
+      key: Columns.NAME,
     },
     {
-      title: 'Age',
-      dataIndex: 'age',
-      key: 'age',
+      title: Columns.AGE,
+      dataIndex: Columns.AGE,
+      key: Columns.AGE,
     },
     {
-      title: 'Address',
-      dataIndex: 'address',
-      key: 'adress',
+      title: Columns.ACTION,
+      dataIndex: Columns.ACTION,
+      key: Columns.ACTION,
     },
     {
-      title: 'Action',
-      key: 'action',
+      title: Columns.ACTION,
+      key: Columns.ACTION,
+    
       render: (record: { key: React.Key }) => (
 
         <Space size="middle">
@@ -72,8 +80,6 @@ const App: React.FC = () => {
     setDataSource(newData);
   };
 
-
-
   const handleAdd = (dataSet: 
     { name: string, age: string, address: string }) => {
     setCount(count + 1)
@@ -88,7 +94,6 @@ const App: React.FC = () => {
     setDataSource([...dataSource, newData]);
   };
 
-
   return (<>
     <Table dataSource={dataSource} columns={columns} />
     <div>
@@ -97,10 +102,6 @@ const App: React.FC = () => {
   </>
   )
 };
-
-const handleEdit = ({})
-
-
 
 export default App;
 
