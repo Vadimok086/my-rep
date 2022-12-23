@@ -68,30 +68,3 @@ const MyModal: FC<MyModalProps> = ({ handleAdd }) => {
 
 export default MyModal;
 
-
-/*
-enum Columns {
-  NAME="Name",
-  DATAINDEX="DataIndex",
-  KEY="Key"
- }
-
-{
-  title: Columns.NAME,
-  dataIndex: Columns.NAME,
-  key: Columns.NAME,
-},
-{
-  title: Columns.AGE,
-  dataIndex: Columns.AGE,
-  key: Columns.AGE,
-},
-{
-  title: Columns.ACTION,
-  dataIndex: Columns.ACTION,
-  key: Columns.ACTION,
-},
-{
-  title: Columns.ACTION,
-  key: Columns.ACTION,
-  */
