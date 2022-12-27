@@ -36,6 +36,7 @@ const App: React.FC = () => {
 enum Columns {
   NAME="name",
   AGE="age",
+  ADDRESS="address",
   ACTION="action"
  }
 
@@ -51,9 +52,9 @@ enum Columns {
       key: Columns.AGE,
     },
     {
-      title: Columns.ACTION,
-      dataIndex: Columns.ACTION,
-      key: Columns.ACTION,
+      title: Columns.ADDRESS,
+      dataIndex: Columns.ADDRESS,
+      key: Columns.ADDRESS,
     },
     {
       title: Columns.ACTION,
