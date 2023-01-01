@@ -1,24 +1,16 @@
 import { Popconfirm, Table, Space, Button } from 'antd';
 import React, { useState } from 'react';
 import MyModal from './components/MyModal';
+import { DataType } from './interface';
 import 'antd/dist/antd.css';
+import {Columns} from './interface';
 import { Formik } from 'formik';
-
-interface DataType {
-  key: number;
-  name: string;
-  age: string;
-  address: string;
-  action: string;
-}
-
 
 const App: React.FC = () => {
 
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
-  
-
+  const [editingUser, setEditingUser] = useState();
 
   const [dataSource, setDataSource] = useState<DataType[]>([
     {
@@ -37,15 +29,7 @@ const App: React.FC = () => {
     },
 
   ]);
-
-
-  enum Columns {
-    NAME = "name",
-    AGE = "age",
-    ADDRESS = "address",
-    ACTION = "action"
-  }
-
+  
   const columns = [
     {
       title: Columns.NAME,

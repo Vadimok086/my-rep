@@ -1,20 +1,8 @@
-import { Button, Modal, Input, } from 'antd';
-import React, { useState, FC, } from 'react';
+import { Modal, Input, } from 'antd';
+import { useState, FC, } from 'react';
+import { MyModalProps } from '../interface';
 
-interface MyModalProps {
-  handleAdd:
-  (dataSet:
-    {
-      name: string,
-      age: string,
-      address: string
-    }) => void
-  isOpenModal: boolean;
-  isChecked: boolean;
-  modalClose:()=>void;
-}
-
-const MyModal: FC<MyModalProps> = ({ handleAdd, isOpenModal, isChecked,modalClose}) => {
+const MyModal: FC<MyModalProps> = ({ handleAdd, isOpenModal, isChecked, modalClose}) => {
 
   const [dataSet, setDataSet] = useState<{
     name: string,
