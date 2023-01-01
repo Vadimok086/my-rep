@@ -1,4 +1,4 @@
-import { Popconfirm, Table, Space, } from 'antd';
+import { Popconfirm, Table, Space, Button } from 'antd';
 import React, { useState } from 'react';
 import MyModal from './components/MyModal';
 import 'antd/dist/antd.css';
@@ -12,7 +12,13 @@ interface DataType {
   action: string;
 }
 
+
 const App: React.FC = () => {
+
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+  
+
 
   const [dataSource, setDataSource] = useState<DataType[]>([
     {
@@ -31,14 +37,14 @@ const App: React.FC = () => {
     },
 
   ]);
- 
 
-enum Columns {
-  NAME="name",
-  AGE="age",
-  ADDRESS="address",
-  ACTION="action"
- }
+
+  enum Columns {
+    NAME = "name",
+    AGE = "age",
+    ADDRESS = "address",
+    ACTION = "action"
+  }
 
   const columns = [
     {
@@ -59,7 +65,7 @@ enum Columns {
     {
       title: Columns.ACTION,
       key: Columns.ACTION,
-    
+
       render: (record: { key: React.Key }) => (
 
         <Space size="middle">
@@ -68,11 +74,18 @@ enum Columns {
             onConfirm={() => handleDelete(record.key)}>
             <a>Delete</a>
           </Popconfirm>
-          <a>Edit</a>
+          <a onClick={()=>{
+            setIsChecked(false)
+            setIsOpenModal(true)
+            }}>Edit</a>
         </Space>
       ),
     },
   ]
+
+  const closeModal=()=>{
+    setIsOpenModal(false)
+  }
 
   const [count, setCount] = useState(3);
 
@@ -81,7 +94,7 @@ enum Columns {
     setDataSource(newData);
   };
 
-  const handleAdd = (dataSet: 
+  const handleAdd = (dataSet:
     { name: string, age: string, address: string }) => {
     setCount(count + 1)
 
@@ -98,7 +111,18 @@ enum Columns {
   return (<>
     <Table dataSource={dataSource} columns={columns} />
     <div>
-      <MyModal handleAdd={handleAdd} />
+      <Button type="primary" onClick={() => {
+        setIsOpenModal(true)
+        setIsChecked(true)
+      }}>
+        Add
+      </Button>
+      <MyModal 
+      isChecked={isChecked} 
+      isOpenModal={isOpenModal} 
+      handleAdd={handleAdd}
+      modalClose={closeModal}
+      />
     </div>
   </>
   )

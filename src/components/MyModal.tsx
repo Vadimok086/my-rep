@@ -1,22 +1,20 @@
-import { Button, Modal, Input,Form } from 'antd';
+import { Button, Modal, Input, } from 'antd';
 import React, { useState, FC, } from 'react';
 
-type MyModalProps = {
-  handleAdd: 
-  (dataSet: 
-    { name: string, age: string, address: string}) => void
+interface MyModalProps {
+  handleAdd:
+  (dataSet:
+    {
+      name: string,
+      age: string,
+      address: string
+    }) => void
+  isOpenModal: boolean;
+  isChecked: boolean;
+  modalClose:()=>void;
 }
 
-const MyModal: FC<MyModalProps> = ({ handleAdd }) => {
-  const [ModalState, setModalState] = useState(false);
-
-  const showModal = () => {
-    setModalState(true);
-  };
-
-  const handleCancel = () => {
-    setModalState(false);
-  };
+const MyModal: FC<MyModalProps> = ({ handleAdd, isOpenModal, isChecked,modalClose}) => {
 
   const [dataSet, setDataSet] = useState<{
     name: string,
@@ -25,22 +23,19 @@ const MyModal: FC<MyModalProps> = ({ handleAdd }) => {
   }>({ name: '', age: '', address: '' })
 
   const handleOk = () => {
-    setModalState(false);
     handleAdd(dataSet);
     setDataSet({ name: '', age: '', address: '' })
+    modalClose()
   };
 
   return (
     <>
-      <Button type="primary" onClick={showModal} >
-        Add
-      </Button>
       <Modal
-        title="Enter data"
-        open={ModalState}
+        open={isOpenModal}
         onOk={handleOk}
-        onCancel={handleCancel}>
-          <Input placeholder='name' onChange={(e: any) => {
+        onCancel={modalClose}>
+          {isChecked? <h1>Enter data</h1>:<h1>Edit data</h1>}
+        <Input placeholder='name' onChange={(e: any) => {
           setDataSet((p) => {
             return { ...p, name: e.target.value }
           })
@@ -50,14 +45,14 @@ const MyModal: FC<MyModalProps> = ({ handleAdd }) => {
           setDataSet((p) => {
             return { ...p, age: e.target.value }
           })
-        }} value={dataSet.age} 
+        }} value={dataSet.age}
         />
         <Input placeholder='address' onChange={(e: any) => {
           setDataSet((p) => {
             return { ...p, address: e.target.value }
           })
-        }} value={dataSet.address} 
-      />
+        }} value={dataSet.address}
+        />
       </Modal>
       <>
       </>
