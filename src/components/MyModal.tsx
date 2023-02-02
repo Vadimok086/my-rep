@@ -1,14 +1,12 @@
 import { Modal, Input, } from 'antd';
 import { useState, FC, } from 'react';
-import { MyModalProps } from '../interface';
+import { DataSetProps, MyModalProps } from '../interface';
 
-const MyModal: FC<MyModalProps> = ({ handleAdd, isOpenModal, isChecked, modalClose}) => {
+const MyModal: FC<MyModalProps> = ({ handleAdd, isOpenModal, isChecked, modalClose }) => {
 
-  const [dataSet, setDataSet] = useState<{
-    name: string,
-    age: string,
-    address: string
-  }>({ name: '', age: '', address: '' })
+  const [editingUser, setEditingUser] = useState();
+
+  const [dataSet, setDataSet] = useState<DataSetProps>({ name: '', age: '', address: '' })
 
   const handleOk = () => {
     handleAdd(dataSet);
@@ -16,13 +14,17 @@ const MyModal: FC<MyModalProps> = ({ handleAdd, isOpenModal, isChecked, modalClo
     modalClose()
   };
 
+
+  
+
   return (
     <>
       <Modal
+        title='Enter data'
         open={isOpenModal}
         onOk={handleOk}
         onCancel={modalClose}>
-          {isChecked? <h1>Enter data</h1>:<h1>Edit data</h1>}
+        {isChecked ? <h1>rtrtr</h1> : <h1>343</h1>}
         <Input placeholder='name' onChange={(e: any) => {
           setDataSet((p) => {
             return { ...p, name: e.target.value }
@@ -42,8 +44,6 @@ const MyModal: FC<MyModalProps> = ({ handleAdd, isOpenModal, isChecked, modalClo
         }} value={dataSet.address}
         />
       </Modal>
-      <>
-      </>
     </>
   );
 };

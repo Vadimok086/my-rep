@@ -4,7 +4,6 @@ import MyModal from './components/MyModal';
 import { DataType } from './interface';
 import 'antd/dist/antd.css';
 import {Columns} from './interface';
-import { Formik } from 'formik';
 
 const App: React.FC = () => {
 
@@ -18,14 +17,12 @@ const App: React.FC = () => {
       name: 'Edward King 0',
       age: '0',
       address: 'London, Park Lane no. 0',
-      action: 'delete',
     },
     {
       key: 2,
       name: 'Edward King 1',
       age: '1',
       address: 'London, Park Lane no. 1',
-      action: 'delete',
     },
 
   ]);
@@ -87,7 +84,6 @@ const App: React.FC = () => {
       name: dataSet.name,
       age: dataSet.age,
       address: dataSet.address,
-      action: ''
     };
     setDataSource([...dataSource, newData]);
   };
@@ -113,5 +109,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-
-

@@ -1,12 +1,11 @@
 export interface DataType {
-    key: number;
-    name: string;
-    age: string;
-    address: string;
-    action: string;
-  }
+  key: number;
+  name: string;
+  age: string;
+  address: string;
+}
 
- export interface MyModalProps {
+export interface MyModalProps {
   handleAdd:
   (dataSet:
     {
@@ -16,12 +15,18 @@ export interface DataType {
     }) => void
   isOpenModal: boolean;
   isChecked: boolean;
-  modalClose:()=>void;
+  modalClose: () => void;
 }
 
- export enum Columns {
+export enum Columns {
   NAME = "name",
   AGE = "age",
   ADDRESS = "address",
   ACTION = "action"
+}
+
+export interface DataSetProps{
+  name: string;
+  age: string;
+  address: string;
 }
